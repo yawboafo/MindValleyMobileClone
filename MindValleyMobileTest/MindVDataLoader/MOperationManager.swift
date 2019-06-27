@@ -64,18 +64,24 @@ public class MOperationManager {
         
     }
     
-    public func cancelOperation(operationID: String) {
+    public func cancelOperation(operationID: String, completionHandler: @escaping (String,Bool) -> Void) {
         for ops in queueManager.queue.operations {
             
             if ops.name == operationID {
                 if ops.isExecuting && !ops.isFinished{
                     
                     ops.cancel()
-                    
+                    completionHandler("\(operationID) was running and has been cancelled",true)
+                    break
+                }else{
+                    completionHandler("\(operationID) was not cancelled because its isExecuting or isFinished",false)
                     break
                 }
                 
                 
+            }else{
+                 completionHandler("\(operationID) was not found",false)
+                break
             }
         }
         

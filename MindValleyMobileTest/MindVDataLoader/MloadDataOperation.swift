@@ -42,33 +42,7 @@ class MloadDataOperation: MOperation<MOperationResponse> {
     
     
     
-  /**  override func start() {
-        
-        if self.withOnlyString == true {
-            
-            guard let url = self.urlString else {
-                
-                cancel()
-                return
-                
-            }
-            
-            guard let finalUrl = URL(string: url) else {
-                
-                cancel()
-                return
-            }
-            
-            
-            
-            // Prepare urlRequest
-            self.urlRequest = URLRequest(url: finalUrl)
-            self.urlRequest?.cachePolicy = .returnCacheDataElseLoad
-            
-        }
-        
-    }**/
-    
+ 
     
     
     override public func main() {
